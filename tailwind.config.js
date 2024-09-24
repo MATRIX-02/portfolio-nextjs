@@ -1,4 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+
+const colors = require("tailwindcss/colors");
+const {
+	default: flattenColorPalette,
+} = require("tailwindcss/lib/util/flattenColorPalette");
+
 module.exports = {
 	darkMode: ["class"],
 	content: [
@@ -63,6 +69,17 @@ module.exports = {
 				sm: "calc(var(--radius) - 4px)",
 			},
 			keyframes: {
+				"shine-pulse": {
+					"0%": {
+						"background-position": "0% 0%",
+					},
+					"50%": {
+						"background-position": "100% 100%",
+					},
+					to: {
+						"background-position": "0% 0%",
+					},
+				},
 				"accordion-down": {
 					from: { height: "0" },
 					to: { height: "var(--radix-accordion-content-height)" },
@@ -93,5 +110,16 @@ module.exports = {
 			},
 		},
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), addVariablesForColors],
 };
+
+function addVariablesForColors({ addBase, theme }) {
+	let allColors = flattenColorPalette(theme("colors"));
+	let newVars = Object.fromEntries(
+		Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+	);
+
+	addBase({
+		":root": newVars,
+	});
+}

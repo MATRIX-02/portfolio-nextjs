@@ -1,21 +1,98 @@
 "use client";
 
-import React from "react";
+import React, { useMemo, useState } from "react";
 import { useTheme } from "next-themes";
-
-import Particles from "@/components/magicui/particles";
+import { project } from "@/data/projects";
+import ProjectCard from "@/components/project-card";
 
 export default function Project() {
 	const { theme } = useTheme();
+	const [activeCategory, setActiveCategory] = useState("All");
+
+	const categories = useMemo(() => {
+		const cats = new Set(["All", ...project.map((p) => p.category)]);
+		return Array.from(cats);
+	}, []);
+
+	const filteredProjects = useMemo(() => {
+		if (activeCategory === "All") {
+			return project;
+		}
+		return project.filter((p) => p.category === activeCategory);
+	}, [activeCategory, project]);
+
+	const sortedProjects = useMemo(() => {
+		return [
+			...filteredProjects.filter((p) => p.isNew),
+			...filteredProjects.filter((p) => !p.isNew),
+		];
+	}, [filteredProjects]);
 
 	return (
-		<main className="container relative flex flex-col items-center justify-between h-auto px-0">
+		<main className="relative flex flex-col items-center justify-between h-auto px-0 ">
 			<div className="relative flex flex-col items-center w-full h-full mx-auto">
-				<div className="group relative mx-auto flex max-w-fit flex-row items-center justify-center rounded-2xl bg-white/40 px-4 py-1.5 text-sm font-medium shadow-[inset_0_-8px_10px_#8fdfff1f] backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%] hover:shadow-[inset_0_-5px_10px_#8fdfff3f] dark:bg-black/40">
-					<div className="absolute inset-0 block h-full w-full animate-gradient bg-gradient-to-r from-[#000000]/50 via-[#ffffff]/50 to-[#000000]/50 bg-[length:var(--bg-size)_100%] p-[1px] ![mask-composite:subtract] [border-radius:inherit] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]"></div>
-					<span className="inline animate-gradient bg-gradient-to-r text-left dark:from-[#ffffff] dark:via-[#8a8a8a] dark:to-[#ffffff] from-[#9c9c9c] via-[#000000] to-[#9c9c9c] bg-[length:var(--bg-size)_100%] bg-clip-text text-transparent text-2xl font-bold px-8">
-						Works
-					</span>
+				<div>
+					<span className="text-[4rem] font-bold">Projects</span>
+				</div>
+				<div className="container relative flex flex-col h-full gap-3 px-6 py-5 lg:w-screen lg:flex-row">
+					<div className="mt-4 lg:w-[20%] w-full p-4 rounded-tr-xl rounded-bl-xl border lg:sticky lg:top-4 lg:self-start drop-shadow-lg">
+						<h4 className="text-xl font-bold">Category</h4>
+						<ul className="flex flex-wrap items-center gap-4 mt-4 lg:space-y-2 lg:block">
+							{categories.map((cat, index) => (
+								<li
+									key={index}
+									className={`relative lg:border-none border overflow-hidden rounded-md group text-white ${
+										activeCategory === cat
+											? "text-lime-400 group-hover:text-black"
+											: ""
+									}`}
+								>
+									<button
+										type="button"
+										onClick={() => setActiveCategory(cat)}
+										className={`z-10 w-full relative translate-x-0 text-left font-semibold py-1 text-sm px-2 duration-100 ${
+											activeCategory === cat
+												? "text-lime-400 group-hover:text-black"
+												: "text-white dark:text-gray-700 group-hover:text-black"
+										}`}
+									>
+										<span className="relative flex justify-between w-full">
+											<span
+												className={`duration-300 lg:group-hover:translate-x-2 ${
+													activeCategory === cat
+														? "text-lime-400 group-hover:text-black"
+														: ""
+												}`}
+											>
+												{cat}
+											</span>
+											<span>
+												(
+												{
+													project.filter((p) =>
+														cat === "All" ? true : p.category === cat
+													).length
+												}
+												)
+											</span>
+										</span>
+									</button>
+									<span
+										className={`absolute left-0 w-full h-full bg-lime-400 translate-x-[-100%] opacity-0 group-hover:translate-x-0 group-hover:opacity-100 duration-300 ${
+											activeCategory === cat ? "translate-x-0 opacity-100" : ""
+										}`}
+									></span>
+								</li>
+							))}
+						</ul>
+					</div>
+					<div className="relative w-full">
+						<div className="flex flex-wrap gap-4 p-4">
+							{sortedProjects.map((proj) => (
+								<ProjectCard key={proj.id} project={proj} />
+							))}
+						</div>
+					</div>
 				</div>
 			</div>
 		</main>

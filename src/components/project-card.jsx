@@ -1,99 +1,98 @@
-import { Badge } from "@/components/ui/badge";
-import {
-	Card,
-	CardContent,
-	CardFooter,
-	CardHeader,
-	CardTitle,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import Link from "next/link";
-import Markdown from "react-markdown";
+"use client";
 
-export function ProjectCard({
-	title,
-	href,
-	description,
-	dates,
-	tags,
-	link,
-	image,
-	video,
-	links,
-	className,
-}) {
+import React, { useMemo } from "react";
+import { ExternalLink } from "lucide-react";
+import ShineBorder from "./magicui/shine-border";
+import ShinyButton from "@/components/magicui/shiny-button";
+import ButtonHover1 from "./ui/ButtonHover1";
+import ButtonHover2 from "./ui/ButtonHover2";
+
+const ProjectCard = ({ project }) => {
+	const {
+		name,
+		category,
+		image,
+		isNew,
+		tags,
+		description,
+		liveLink,
+		codeLink,
+	} = project;
+
+	const randomFactor = useMemo(() => 0.5 + Math.random(), []);
+
 	return (
-		<Card
-			className={
-				"flex flex-col overflow-hidden border hover:shadow-lg transition-all duration-300 ease-out h-full"
-			}
-		>
-			<Link
-				href={href || "#"}
-				className={cn("block cursor-pointer", className)}
+		<div className="w-full  lg:w-[calc(50%-1rem)] ">
+			<ShineBorder
+				color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+				randomFactor={randomFactor}
 			>
-				{video && (
-					<video
-						src={video}
-						autoPlay
-						loop
-						muted
-						playsInline
-						className="object-cover object-top w-full h-40 mx-auto pointer-events-none" // needed because random black line at bottom of video
-					/>
-				)}
-				{image && (
-					<Image
-						src={image}
-						alt={title}
-						width={500}
-						height={300}
-						className="object-cover object-top w-full h-40 overflow-hidden"
-					/>
-				)}
-			</Link>
-			<CardHeader className="px-2">
-				<div className="space-y-1">
-					<CardTitle className="mt-1 text-base">{title}</CardTitle>
-					<time className="font-sans text-xs">{dates}</time>
-					<div className="hidden font-sans text-xs underline print:visible">
-						{link?.replace("https://", "").replace("www.", "").replace("/", "")}
-					</div>
-					<Markdown className="max-w-full font-sans text-xs prose text-pretty text-muted-foreground dark:prose-invert">
-						{description}
-					</Markdown>
-				</div>
-			</CardHeader>
-			<CardContent className="flex flex-col px-2 mt-auto">
-				{tags && tags.length > 0 && (
-					<div className="flex flex-wrap gap-1 mt-2">
-						{tags?.map((tag) => (
-							<Badge
-								className="px-1 py-0 text-[10px]"
-								variant="secondary"
-								key={tag}
+				<div className="relative w-[99.66%] mt-[0.08rem] overflow-hidden rounded-[0.44rem] shadow-lg group/card">
+					<div className="overflow-hidden ">
+						<div className="relative group/tooltip">
+							<a href={liveLink} target="_blank" rel="noopener noreferrer">
+								<img
+									alt={`${name} Website`}
+									className="object-fill h-[18.3rem]"
+									src={image}
+								/>
+							</a>
+							<span
+								className="absolute px-3 py-1 text-xs text-white transition-opacity duration-300 border rounded-md opacity-0 pointer-events-none group-hover/tooltip:opacity-100 whitespace-nowrap"
+								style={{ transform: "translate(30%, -130%)" }}
 							>
-								{tag}
-							</Badge>
-						))}
+								Visit Website
+								<ExternalLink
+									className="inline-block ml-1 text-lime-400"
+									size={16}
+								/>
+							</span>
+						</div>
 					</div>
-				)}
-			</CardContent>
-			<CardFooter className="px-2 pb-2">
-				{links && links.length > 0 && (
-					<div className="flex flex-row flex-wrap items-start gap-1">
-						{links?.map((link, idx) => (
-							<Link href={link?.href} key={idx} target="_blank">
-								<Badge key={idx} className="flex gap-2 px-2 py-1 text-[10px]">
-									{link.icon}
-									{link.type}
-								</Badge>
-							</Link>
-						))}
+					<div className="relative flex flex-col justify-between gap-2 p-4 min-h-48">
+						<div className="flex justify-between w-full gap-2">
+							<h3 className="relative text-xl font-semibold">
+								{name}
+								{isNew && <ShinyButton>New</ShinyButton>}
+							</h3>
+							<div className="flex flex-wrap items-center gap-2">
+								{tags.map((tag, index) => (
+									<span
+										key={index}
+										className="px-2 py-1 text-xs font-semibold text-gray-300 bg-black border rounded-full dark:text-gray-700 dark:bg-gray-200"
+									>
+										{tag}
+									</span>
+								))}
+							</div>
+						</div>
+						<div className="flex flex-col justify-between flex-grow">
+							<p className="mt-2 text-gray-300 duration-300 dark:text-gray-600">
+								{description}
+							</p>
+							<div className="flex gap-5">
+								<a href={liveLink} target="_blank" rel="noopener noreferrer">
+									<ButtonHover1
+										text="Live Demo"
+										iconColor="white"
+										darkIconColor="black"
+									/>
+								</a>
+								{codeLink && (
+									<ButtonHover2
+										text="View on Github"
+										textColor="#ffedd3"
+										accentColor="#ffc506"
+										href={codeLink}
+									/>
+								)}
+							</div>
+						</div>
 					</div>
-				)}
-			</CardFooter>
-		</Card>
+				</div>
+			</ShineBorder>
+		</div>
 	);
-}
+};
+
+export default ProjectCard;

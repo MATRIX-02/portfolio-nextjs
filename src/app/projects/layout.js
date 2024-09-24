@@ -8,14 +8,10 @@ import Particles from "@/components/magicui/particles";
 export default function ProjectLayout({ children }) {
 	const { theme } = useTheme();
 	return (
-		<main
-			className={cn(
-				"h-full bg-background antialiased mx-auto p-12 sm:pt-24 px-6 "
-			)}
-		>
+		<main className={cn("h-full antialiased mx-auto  px-6 ")}>
 			{children}
 			<Particles
-				className="absolute inset-0 -z-10"
+				className="fixed inset-0 -z-10"
 				quantity={100}
 				ease={80}
 				color={theme === "dark" ? "#127c12" : "#ffffff"}

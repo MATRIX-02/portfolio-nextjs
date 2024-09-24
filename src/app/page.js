@@ -13,7 +13,7 @@ export default function Home() {
 	return (
 		<main className="container relative flex flex-col items-center justify-between h-full px-5 md:px-0">
 			<Particles
-				className="absolute inset-0 -z-10"
+				className="fixed inset-0 -z-10"
 				quantity={100}
 				ease={80}
 				color={theme === "dark" ? "#A3E635" : "#ffffff"}
