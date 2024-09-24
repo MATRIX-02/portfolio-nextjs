@@ -33,13 +33,13 @@ const Icons = {
 const DATA = {
 	navbar: [
 		{ href: "#", icon: HomeIcon, label: "Home" },
-		{ href: "#", icon: PencilIcon, label: "Blog" },
+		{ href: "#", icon: PencilIcon, label: "Projects" },
 	],
 	contact: {
 		social: {
 			GitHub: {
 				name: "GitHub",
-				url: "#",
+				url: "https://github.com/MATRIX-02",
 				icon: GithubIcon,
 			},
 			LinkedIn: {
@@ -50,7 +50,7 @@ const DATA = {
 
 			Email: {
 				name: "Send Email",
-				url: "#",
+				url: "mailto:mayanksingh122001@gmail.com",
 				icon: MailIcon,
 			},
 			Resume: {
