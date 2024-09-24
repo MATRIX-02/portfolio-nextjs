@@ -146,16 +146,15 @@ export default function AboutSection() {
 				</div>
 				<p class="relative flex w-full mt-6 mb-6 text-lg md:mb-0 lg:mt-1">
 					Since the beginning, I've been deeply passionate about computer
-					science, starting with no-code tools back in 2018. This early
-					fascination led me to teach myself how to code, and over the years,
-					I've honed my skills across various programming languages and
-					technologies.
+					science, starting with Java back in 2017. This early fascination led
+					me to teach myself how to code, and over the years, I've honed my
+					skills across various programming languages and technologies.
 					<br />
 					<br />
 					I've had the privilege of working in a web development company, and
 					now, I'm eager to build innovative projects, automate tasks, and push
-					the boundaries in Web &amp; Mobile Development, Open Source, and
-					Competitive Programming.
+					the boundaries in Web Development, Open Source, and Competitive
+					Programming.
 				</p>
 			</div>
 
@@ -230,7 +229,7 @@ export default function AboutSection() {
 				words={[
 					"Building the Web, One Pixel at a Time.",
 					"Code That Connects People and Possibilities.",
-					"Solutions for web design, development, and digital marketing.",
+					"Solutions for web design, development, and automation.",
 				]}
 			/>
 		</div>

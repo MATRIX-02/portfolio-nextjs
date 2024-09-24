@@ -337,11 +337,10 @@ export default function WorksSection() {
 			</div>
 			<div class="relative flex flex-col justify-end gap-4 pt-12">
 				<p class="text-lg">
-					A website is essential in today's digital landscape because it serves
-					as the primary online presence for businesses, organizations, and
-					individuals. It provides a platform to showcase products, services,
-					and information to a global audience, enhancing visibility and
-					credibility.
+					Your business needs a frontend developer to create fast, responsive,
+					and user-friendly web applications. With React.js/Next.js expertise, I
+					deliver optimized, scalable sites that engage users and drive growth.
+					Let’s work together to achieve your goals.
 				</p>
 			</div>
 		</div>

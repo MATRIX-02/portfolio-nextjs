@@ -54,8 +54,7 @@ export default function ProfileSection() {
 					</div>
 					<p className="block max-w-xl text-lg text-center md:text-left">
 						<span className="dark:text-black text-lime-400">Web Developer</span>{" "}
-						with over 5+ years of experience in crafting dynamic and responsive
-						websites.
+						expert in crafting dynamic and responsive websites.
 					</p>
 				</div>
 
