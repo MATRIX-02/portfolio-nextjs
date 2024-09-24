@@ -24,12 +24,6 @@ import {
 import { Dock, DockIcon } from "@/components/magicui/dock";
 import { ModeToggle } from "@/components/mode-toggle";
 
-const Icons = {
-	calendar: (props) => <CalendarIcon {...props} />,
-	email: (props) => <MailIcon {...props} />,
-	linkedin: (props) => <LinkedinIcon {...props} />,
-};
-
 const DATA = {
 	navbar: [
 		{ href: "/", icon: HomeIcon, label: "Home" },
@@ -55,7 +49,8 @@ const DATA = {
 			},
 			Resume: {
 				name: "Resume",
-				url: "#",
+				type: "file",
+				url: "/static/Mayank_Resume.pdf",
 				icon: FileIcon,
 			},
 		},
@@ -96,18 +91,31 @@ const NavigationDock = () => {
 						<DockIcon key={name}>
 							<Tooltip>
 								<TooltipTrigger asChild>
-									<Link
-										href={social.url}
-										aria-label={social.name}
-										target="_blank"
-										rel="noopener noreferrer"
-										className={cn(
-											buttonVariants({ variant: "ghost", size: "icon" }),
-											"size-12 rounded-full"
-										)}
-									>
-										<social.icon className="size-4" />
-									</Link>
+									{social.type === "file" ? (
+										<a
+											href={social.url}
+											aria-label={social.name}
+											className={cn(
+												buttonVariants({ variant: "ghost", size: "icon" }),
+												"size-12 rounded-full"
+											)}
+										>
+											<social.icon className="size-4" />
+										</a>
+									) : (
+										<Link
+											href={social.url}
+											aria-label={social.name}
+											target="_blank"
+											rel="noopener noreferrer"
+											className={cn(
+												buttonVariants({ variant: "ghost", size: "icon" }),
+												"size-12 rounded-full"
+											)}
+										>
+											<social.icon className="size-4" />
+										</Link>
+									)}
 								</TooltipTrigger>
 								<TooltipContent>
 									<p>{name}</p>
