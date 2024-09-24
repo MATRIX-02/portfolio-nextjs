@@ -4,11 +4,8 @@ import { cn } from "@/lib/utils";
 import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 import NavigationDock from "@/components/Navigation/NavigationDock";
-
-const fontSans = FontSans({
-	subsets: ["latin"],
-	variable: "--font-sans",
-});
+import AnimatedCursor from "react-animated-cursor";
+import Particles from "@/components/magicui/particles";
 
 export default function RootLayout({ children }) {
 	return (
@@ -25,17 +22,32 @@ export default function RootLayout({ children }) {
 					property="og:description"
 					content="Welcome to Mayank's Portfolio. Explore my projects and skills."
 				/>
-				<meta property="og:image" content="/path/to/your/image.jpg" />
-				<meta property="og:url" content="https://yourwebsite.com" />
+				<meta property="og:url" content="https://mayank--dev.me/Portfolio/" />
 				<meta name="twitter:card" content="summary_large_image" />
+				<link rel="shortcut icon" href="/static/favicon.ico" />
 			</head>
 			<body
 				className={cn(
-					"min-h-screen bg-background font-sans antialiased max-w-2xl mx-auto py-12 sm:py-24 px-6",
-					fontSans.variable
+					"h-full bg-background antialiased mx-auto p-12 sm:pt-24 px-6 "
 				)}
 			>
-				<ThemeProvider attribute="class" defaultTheme="light">
+				<ThemeProvider attribute="class" defaultTheme="dark">
+					{/* <AnimatedCursor
+						innerSize={8}
+						outerSize={10}
+						innerScale={1}
+						outerScale={2}
+						outerAlpha={0}
+						hasBlendMode={true}
+						innerStyle={{
+							backgroundColor: "white",
+							mixBlendMode: "exclusion",
+						}}
+						outerStyle={{
+							border: "3px solid white",
+							mixBlendMode: "exclusion",
+						}}
+					/> */}
 					<TooltipProvider delayDuration={0}>
 						{children}
 						<NavigationDock />

@@ -1,26 +1,31 @@
 "use client";
 
-import Particles from "@/components/magicui/particles";
+import React from "react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import Particles from "@/components/magicui/particles";
+import ProfileSection from "@/components/MainPage/ProfileSection";
+import AboutSection from "@/components/MainPage/AboutSection";
+import WorksSection from "@/components/MainPage/WorksSection";
 
 export default function Home() {
 	const { theme } = useTheme();
-	const [color, setColor] = useState("#ffffff");
-
-	useEffect(() => {
-		setColor(theme === "dark" ? "#000000" : "#ffffff");
-	}, [theme]);
 
 	return (
-		<div>
+		<main className="container relative flex flex-col items-center justify-between h-full px-5 md:px-0">
 			<Particles
-				className="absolute inset-0"
+				className="absolute inset-0 -z-10"
 				quantity={100}
 				ease={80}
-				color={color}
+				color={theme === "dark" ? "#A3E635" : "#ffffff"}
 				refresh
 			/>
-		</div>
+			<div className="container relative flex flex-col h-full gap-5 px-0">
+				<div className="relative z-20 flex flex-col w-full h-full lg:flex-row lg:-mt-24">
+					<ProfileSection />
+					<AboutSection />
+					<WorksSection />
+				</div>
+			</div>
+		</main>
 	);
 }
