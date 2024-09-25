@@ -9,7 +9,7 @@ export const project = [
 		description:
 			"Discover the latest and greatest websites with GameRadar Hub, your ultimate guide to the web's hidden gems and trending platforms.",
 		liveLink: "https://matrix-02.github.io/GameRadar-Hub/",
-		codeLink: "https://github.com/yourusername/sushisea-restaurant",
+		codeLink: "https://github.com/MATRIX-02/GameRadar-Hub",
 	},
 	{
 		id: 2,
@@ -21,7 +21,7 @@ export const project = [
 		description:
 			"A lofi music player with a minimalist design for relaxation, offering a seamless and calming listening experience.",
 		liveLink: "https://matrix-02.github.io/JustChill/",
-		codeLink: "https://github.com/yourusername/task-manager-pro",
+		codeLink: "https://github.com/MATRIX-02/JustChill",
 	},
 	{
 		id: 3,
@@ -45,7 +45,7 @@ export const project = [
 		description:
 			"An online food delivery platform similar, offering a wide range of cuisines.",
 		liveLink: "https://matrix-02.github.io/NomNomFoods/",
-		codeLink: "https://github.com/yourusername/virtual-art-gallery",
+		codeLink: "https://github.com/MATRIX-02/NomNomFoods",
 	},
 	{
 		id: 5,
@@ -57,6 +57,6 @@ export const project = [
 		description:
 			"An interactive quiz platform for learning and practicing JavaScript and Frontend Interviews",
 		liveLink: "https://mayank--dev.me/ScriptQuiz",
-		codeLink: "https://github.com/yourusername/health-hub",
+		codeLink: "https://github.com/MATRIX-02/ScriptQuiz",
 	},
 ];

@@ -19,6 +19,7 @@ export default function Home() {
 				color={theme === "dark" ? "#A3E635" : "#ffffff"}
 				refresh
 			/>
+
 			<div className="container relative flex flex-col h-full gap-5 px-0">
 				<div className="relative z-20 flex flex-col w-full h-full lg:flex-row lg:-mt-24">
 					<ProfileSection />

@@ -50,7 +50,7 @@ const DATA = {
 			Resume: {
 				name: "Resume",
 				type: "file",
-				url: "/static/Mayank_Resume.pdf",
+				url: "/resume",
 				icon: FileIcon,
 			},
 		},
@@ -59,7 +59,7 @@ const DATA = {
 
 const NavigationDock = () => {
 	return (
-		<div className="fixed inset-x-0 z-30 flex h-full mx-auto mb-4 origin-bottom bottom-10 max-h-14">
+		<div className="fixed inset-x-0 z-30 flex h-full mx-auto origin-bottom bottom-3 max-h-14">
 			<TooltipProvider>
 				<Dock
 					direction="middle"
