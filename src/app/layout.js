@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
 					"h-full bg-background antialiased mx-auto p-12 sm:pt-24 px-6 "
 				)}
 			>
-				<ThemeProvider attribute="class" defaultTheme="dark">
+				<ThemeProvider attribute="class" defaultTheme="light">
 					{/* <AnimatedCursor
 						innerSize={8}
 						outerSize={10}
