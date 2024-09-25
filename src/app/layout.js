@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
 			<head>
-				<title>Mayank's Portfolio</title>
+				<title>Mayank — Full Stack Developer</title>
 				<meta
 					name="description"
 					content="Welcome to Mayank's Portfolio. Explore my projects and skills."
@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
 				/>
 				<meta property="og:url" content="https://mayank--dev.me/Portfolio/" />
 				<meta name="twitter:card" content="summary_large_image" />
-				<link rel="shortcut icon" href="/static/favicon.ico" />
+				<link rel="shortcut icon" href="/static/Website-Logo.png" />
 			</head>
 			<body
 				className={cn(
