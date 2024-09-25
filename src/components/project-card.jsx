@@ -22,7 +22,7 @@ const ProjectCard = ({ project }) => {
 	const randomFactor = useMemo(() => 0.5 + Math.random(), []);
 
 	return (
-		<div className="w-full  lg:w-[calc(50%-1rem)] ">
+		<div className="w-full">
 			<ShineBorder
 				color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
 				randomFactor={randomFactor}

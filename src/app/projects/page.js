@@ -4,6 +4,9 @@ import React, { useMemo, useState } from "react";
 import { useTheme } from "next-themes";
 import { project } from "@/data/projects";
 import ProjectCard from "@/components/project-card";
+import BlurFade from "@/components/magicui/blur-fade";
+
+const BLUR_FADE_DELAY = 0.04;
 
 export default function Project() {
 	const { theme } = useTheme();
@@ -88,8 +91,14 @@ export default function Project() {
 					</div>
 					<div className="relative w-full">
 						<div className="flex flex-wrap gap-4 p-4">
-							{sortedProjects.map((proj) => (
-								<ProjectCard key={proj.id} project={proj} />
+							{sortedProjects.map((proj, index) => (
+								<BlurFade
+									className="w-full lg:w-[calc(50%-1rem)] "
+									key={proj.id}
+									delay={BLUR_FADE_DELAY * index}
+								>
+									<ProjectCard project={proj} />
+								</BlurFade>
 							))}
 						</div>
 					</div>

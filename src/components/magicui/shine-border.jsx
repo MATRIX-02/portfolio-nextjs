@@ -28,7 +28,7 @@ export default function ShineBorder({
 				"--border-radius": `${borderRadius}px`,
 			}}
 			className={cn(
-				"relative grid min-h-[60px] z-30 w-fit min-w-[300px] place-items-center rounded-[--border-radius]  text-white over",
+				"relative grid min-h-[60px] z-30 w-full min-w-[300px] place-items-center rounded-[--border-radius]  text-white over",
 				className
 			)}
 		>
