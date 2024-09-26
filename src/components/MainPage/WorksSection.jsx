@@ -337,7 +337,7 @@ export default function WorksSection() {
 			</div>
 			<div class="relative flex flex-col justify-end gap-4 pt-12">
 				<p class="text-lg">
-					Your business needs a frontend developer to create fast, responsive,
+					Your business needs a Full stack developer to create fast, responsive,
 					and user-friendly web applications. With React.js/Next.js expertise, I
 					deliver optimized, scalable sites that engage users and drive growth.
 					Let’s work together to achieve your goals.
