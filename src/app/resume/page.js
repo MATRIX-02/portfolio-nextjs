@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import BlurFade from "@/components/magicui/blur-fade";
 import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { ResumeCard } from "@/components/Resume/resume-card";
@@ -9,10 +10,40 @@ import { Badge } from "@/components/ui/badge";
 import { DATA } from "@/data/resume";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import {
+	SiReact,
+	SiNextdotjs,
+	SiTypescript,
+	SiNodedotjs,
+	SiPython,
+	SiCplusplus,
+	SiMongodb,
+	SiFigma,
+	SiExpress,
+	SiGithub,
+	SiGit,
+	SiMui,
+} from "react-icons/si";
 
 const BLUR_FADE_DELAY = 0.04;
 
+const skills = [
+	{ name: "React", icon: SiReact, color: "#61DAFB" },
+	{ name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+	{ name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+	{ name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+	{ name: "Python", icon: SiPython, color: "#3776AB" },
+	{ name: "C++", icon: SiCplusplus, color: "#00599C" },
+	{ name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+	{ name: "Figma", icon: SiFigma, color: "#F24E1E" },
+	{ name: "Express.js", icon: SiExpress, color: "#000000" },
+	{ name: "GitHub", icon: SiGithub, color: "#181717" },
+	{ name: "Git", icon: SiGit, color: "#F05032" },
+	{ name: "Material UI", icon: SiMui, color: "#0081CB" },
+];
+
 export default function Resume() {
+	const [hoveredSkill, setHoveredSkill] = useState(null);
 	return (
 		<main className="flex max-w-2xl m-auto flex-col min-h-[100dvh] space-y-10">
 			<section id="hero">
@@ -94,10 +125,29 @@ export default function Resume() {
 					<BlurFade delay={BLUR_FADE_DELAY * 9}>
 						<h2 className="text-xl font-bold">Skills</h2>
 					</BlurFade>
-					<div className="flex flex-wrap gap-1">
-						{DATA.skills.map((skill, id) => (
-							<BlurFade key={skill} delay={BLUR_FADE_DELAY * 10 + id * 0.05}>
-								<Badge key={skill}>{skill}</Badge>
+					<div className="grid grid-cols-3 gap-8 md:grid-cols-5 justify-items-center">
+						{skills.map((skill, id) => (
+							<BlurFade
+								key={skill.name}
+								delay={BLUR_FADE_DELAY * 10 + id * 0.05}
+							>
+								<div
+									className="relative group"
+									onMouseEnter={() => setHoveredSkill(skill.name)}
+									onMouseLeave={() => setHoveredSkill(null)}
+								>
+									<div className="flex items-center justify-center w-16 h-16 transition-transform bg-white rounded-full shadow-lg group-hover:scale-110">
+										<skill.icon
+											className="w-10 h-10"
+											style={{ color: skill.color }}
+										/>
+									</div>
+									{hoveredSkill === skill.name && (
+										<div className="absolute px-3 py-1 text-sm text-white transform -translate-x-1/2 bg-gray-800 rounded-md -bottom-8 left-1/2 whitespace-nowrap">
+											{skill.name}
+										</div>
+									)}
+								</div>
 							</BlurFade>
 						))}
 					</div>
