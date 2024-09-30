@@ -20,7 +20,7 @@ export default function Home() {
 				refresh
 			/>
 			<img
-				src="/static/logo.png"
+				src="/static/logo-transparent.png"
 				alt="Mayank's - Full Stack Developer"
 				className="absolute inset-0 left-0 z-10 object-cover w-10 sm:-top-20"
 			/>
