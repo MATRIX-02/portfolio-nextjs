@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
 				/>
 				<meta property="og:url" content="https://mayank--dev.me/Portfolio/" />
 				<meta name="twitter:card" content="summary_large_image" />
-				<link rel="shortcut icon" href="./static/logo-circle.png" />
+				<link rel="shortcut icon" href="../../static/logo-circle.png" />
 			</head>
 			<body
 				className={cn(
