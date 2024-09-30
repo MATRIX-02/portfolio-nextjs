@@ -19,7 +19,11 @@ export default function Home() {
 				color={theme === "dark" ? "#A3E635" : "#ffffff"}
 				refresh
 			/>
-
+			<img
+				src="/static/logo.png"
+				alt="Mayank's - Full Stack Developer"
+				className="absolute inset-0 left-0 z-10 object-cover w-10 sm:-top-20"
+			/>
 			<div className="container relative flex flex-col h-full gap-5 px-0">
 				<div className="relative z-20 flex flex-col w-full h-full lg:flex-row lg:-mt-24">
 					<ProfileSection />
