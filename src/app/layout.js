@@ -6,11 +6,11 @@ import "./globals.css";
 import NavigationDock from "@/components/Navigation/NavigationDock";
 import AnimatedCursor from "react-animated-cursor";
 import Particles from "@/components/magicui/particles";
-import Head from "next/head";
+import { Html, Head } from "next/document";
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" suppressHydrationWarning>
+		<Html lang="en" suppressHydrationWarning>
 			<Head>
 				<title>Mayank — Full Stack Developer</title>
 				<meta
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
 				/>
 				<meta property="og:url" content="https://mayank--dev.me/Portfolio/" />
 				<meta name="twitter:card" content="summary_large_image" />
-				<link rel="shortcut icon" href="./logo-circle.png" />
+				<link rel="shortcut icon" href="./static/logo-circle.png" />
 			</Head>
 			<body
 				className={cn(
@@ -55,6 +55,6 @@ export default function RootLayout({ children }) {
 					</TooltipProvider>
 				</ThemeProvider>
 			</body>
-		</html>
+		</Html>
 	);
 }
